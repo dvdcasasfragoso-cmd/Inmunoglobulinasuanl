@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>InmunoIX: Inmunodeficiencias + Terapia IGIV | Guía para Médicos</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef3fc;
+            color: #132e3c;
+            line-height: 1.5;
+        }
+
+        /* header premium */
+        .hero {
+            background: linear-gradient(125deg, #0a3142 0%, #115e7c 100%);
+            color: white;
+            padding: 2rem 2rem 1.6rem;
+            text-align: center;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .hero h1 i {
+            margin-right: 12px;
+            color: #ffd966;
+        }
+
+        .team-badge {
+            margin-top: 0.8rem;
+            background: rgba(255,255,255,0.12);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 1.5rem 2.5rem;
+        }
+
+        /* tabs o secciones orgánicas */
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #cce1ec;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1f5e7a;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn i {
+            font-size: 1rem;
+        }
+
+        .tab-btn.active {
+            background: #136b8d;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fade 0.25s ease;
+        }
+
+        .tab-content.active-tab {
+            display: block;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* cards y grids */
+        .grid-2 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            flex: 1;
+            min-width: 280px;
+            transition: 0.2s;
+        }
+        .card-header {
+            background: #f1f8fe;
+            padding: 1rem 1.4rem;
+            border-bottom: 2px solid #cce1ec;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #125e7c;
+        }
+        .card-body {
+            padding: 1.3rem;
+        }
+
+        .warning-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .warning-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .warning-list li i {
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            color: #e67e22;
+        }
+
+        .quiz-option {
+            background: #f8fafc;
+            border: 1px solid #d0e2ed;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            margin: 0.6rem 0;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .quiz-option:hover {
+            background: #e3f0f7;
+            border-color: #3a9bd5;
+        }
+        .feedback {
+            margin-top: 1rem;
+            font-weight: 500;
+            padding: 0.6rem;
+            border-radius: 1rem;
+        }
+        .btn-primary {
+            background: #136b8d;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        .badge-pill {
+            background: #e3f0f5;
+            color: #0f6b8c;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.75rem;
+        }
+
+        footer {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid #cde0e8;
+            padding: 1.5rem;
+        }
+        @media (max-width: 750px) {
+            .nav-tabs { justify-content: center; }
+            .hero h1 { font-size: 1.8rem; }
+        }
+        .ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eef3fc;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #136b8d;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        .marca-mini {
+            background: #f4fafd;
+            border-radius: 0.8rem;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+<div class="hero">
+    <h1><i class="fas fa-shield-virus"></i> InmunoGuide PRO</h1>
+    <p>Diagnóstico, signos de alarma, inmunodeficiencias y terapia con inmunoglobulinas</p>
+    <div class="team-badge"><i class="fas fa-user-md"></i> David Casas · Ángel Navi Contreras · Salvador Caudillo</div>
+</div>
+
+<div class="container">
+    <!-- NAVEGACIÓN POR PESTAÑAS (integral) -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" data-tab="tab1"><i class="fas fa-exclamation-triangle"></i> Signos Alarma + IDP</button>
+        <button class="tab-btn" data-tab="tab2"><i class="fas fa-vial"></i> Terapia IGIV</button>
+        <button class="tab-btn" data-tab="tab3"><i class="fas fa-stethoscope"></i> Casos Clínicos / Quiz</button>
+        <button class="tab-btn" data-tab="tab4"><i class="fas fa-book"></i> Referencias & Guías</button>
+    </div>
+
+    <!-- PESTAÑA 1: Signos de alarma + tipos de inmunodeficiencias + a quién acudir -->
+    <div id="tab1" class="tab-content active-tab">
+        <div class="grid-2">
+            <!-- columna signos de alarma niños y adultos -->
+            <div class="card">
+                <div class="card-header"><i class="fas fa-baby-carriage"></i> Signos de Alarma Temprana</div>
+                <div class="card-body">
+                    <h4><i class="fas fa-child"></i> En niños (hasta 12 años)</h4>
+                    <ul class="warning-list">
+                        <li><i class="fas fa-lungs"></i> ≥ 8 otitis medias / año o 2 neumonías graves en 1 año.</li>
+                        <li><i class="fas fa-weight-scale"></i> Fracaso para medrar / mala ganancia ponderal.</li>
+                        <li><i class="fas fa-bacteria"></i> Infecciones profundas (abscesos, sepsis) por gérmenes poco habituales.</li>
+                        <li><i class="fas fa-allergies"></i> Historia familiar de inmunodeficiencia primaria o muertes inexplicadas.</li>
+                        <li><i class="fas fa-hand-sparkles"></i> Eczema severo + trombocitopenia (sospecha Wiskott-Aldrich).</li>
+                    </ul>
+                    <h4 class="mt-3"><i class="fas fa-user"></i> En adultos</h4>
+                    <ul class="warning-list">
+                        <li><i class="fas fa-lungs"></i> 2 o más neumonías documentadas en 3 años.</li>
+                        <li><i class="fas fa-virus"></i> Infecciones recurrentes que requieren antibióticos IV o hospitalización.</li>
+                        <li><i class="fas fa-gem"></i> Enfermedad autoinmune + historia de infecciones repetitivas (CVID).</li>
+                        <li><i class="fas fa-weight-hanging"></i> Pérdida inexplicada de peso, diarrea crónica, bronquiectasias.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Tipos de inmunodeficiencias + características -->
+            <div class="card">
+                <div class="card-header"><i class="fas fa-dna"></i> Tipos de IDP + Características</div>
+                <div class="card-body">
+                    <p><strong>Inmunodeficiencias predominio humoral (más frecuentes):</strong></p>
+                    <ul>
+                        <li><strong>Agammaglobulinemia de Bruton (XLA):</strong> varones, ausencia de células B, IgG &lt;200 mg/dL, infecciones bacterianas desde los 6-9 meses.</li>
+                        <li><strong>Inmunodeficiencia común variable (CVID):</strong> hipogammaglobulinemia, fallo en respuesta vacunal, infecciones sinopulmonares, autoinmunidad.</li>
+                        <li><strong>Déficit de IgA:</strong> el más común, generalmente asintomático, pero puede asociar infecciones y alergia.</li>
+                        <li><strong>Déficit de subclases IgG:</strong> infecciones recurrentes respiratorias.</li>
+                    </ul>
+                    <p><strong>Defectos combinados / Sd. Hiper IgM:</strong> susceptibilidad a Pneumocystis, diarrea crónica, neutropenia.</p>
+                    <hr>
+                    <p><i class="fas fa-hospital-user"></i> <strong>¿Con quién acudir?</strong> Inmunólogo clínico / alergólogo pediatra o adulto. Realizar: inmunoglobulinas séricas (IgG, IgA, IgM), subpoblaciones linfocitarias, respuesta a vacunas. <span class="badge-pill">Tratamiento estándar: Inmunoglobulina IV o SC de reemplazo</span></p>
+                    <p><i class="fas fa-syringe"></i> <strong>Tratamiento recomendado:</strong> Terapia de reemplazo con IGIV 400-600 mg/kg cada 3-4 semanas. En defectos combinados graves: trasplante de células madre.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Imagen conceptual + manejo -->
+        <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-header"><i class="fas fa-chalkboard-user"></i> Algoritmo rápido diagnóstico</div>
+            <div class="card-body">
+                <p><strong>Ante sospecha:</strong> Cuantificación de inmunoglobulinas → si disminución → evaluar respuesta vacunal (tétanos, neumococo) → fenotipo linfocitario → remisión a Inmunología. Iniciar Inmunoglobulina si hipogammaglobulinemia significativa + infecciones.</p>
+                <div class="badge-pill"><i class="fas-regular fa-clock"></i> El tratamiento precoz reduce daño pulmonar irreversible.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 2: Terapia con inmunoglobulinas IV (Información completa + marcas, efectos adversos, obtención) -->
+    <div id="tab2" class="tab-content">
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header"><i class="fas fa-info-circle"></i> Fundamentos IGIV</div>
+                <div class="card-body">
+                    <p><strong>¿Qué es?</strong> Inmunoglobulina G policlonal obtenida de plasma de donadores (≥10,000 donantes/lote). Indicada como reemplazo en inmunodeficiencias humoral e inmunomodulación (dosis altas 1-2 g/kg).</p>
+                    <p><strong>Aplicaciones:</strong> Inmunodeficiencias primarias/secundarias, Púrpura Trombocitopénica Inmune, Kawasaki, Guillain-Barré, polineuropatía desmielinizante, LES, dermatomiositis, etc.</p>
+                    <p><i class="fas fa-flask"></i> <strong>Obtención:</strong> Fraccionamiento con etanol frío, pasteurización, ultrafiltración → IgG &gt;95%, trazas IgA. Estabilizada para evitar agregados.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><i class="fas fa-tachometer-alt"></i> Vías de adm. + Ventajas/Desv.</div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>IV:</strong> acceso rápido a niveles altos, hospitalario; riesgo reacciones velocidad-dependiente. Dosis única.</li>
+                        <li><strong>Subcutánea:</strong> domiciliaria, niveles estables, menos efectos sistémicos; requiere entrenamiento.</li>
+                        <li><strong>IM:</strong> en desuso, solo dosis bajas, dolorosa.</li>
+                    </ul>
+                    <p><span class="badge-pill"><i class="fas fa-head-side-medical"></i> Efectos adversos frecuentes: cefalea, náusea, fiebre, escalofríos. Prevención: velocidad lenta + premedicación (antihistamínico, paracetamol). Reacción anafiláctica rara, suspender infusión.</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 1rem;">
+            <div class="card-header"><i class="fas fa-tablets"></i> Marcas en México / Internacional + Costos orientativos</div>
+            <div class="card-body">
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                    <div class="marca-mini" style="flex:1;"><i class="fas fa-capsules"></i> <strong>Privigen®</strong> (CSL Behring) <br> IV, 10%. Costo: ~$13,000-22,000 MXN por 10g</div>
+                    <div class="marca-mini" style="flex:1;"><i class="fas fa-capsules"></i> <strong>Gammagard® / Flebogamma®</strong> (Grifols) <br> desde $9,000-18,000 MXN por 5g</div>
+                    <div class="marca-mini" style="flex:1;"><i class="fas fa-globe"></i> <strong>Octagam®</strong> (Octapharma) <br> Similar rango internacional: 70-150 USD/g</div>
+                    <div class="marca-mini" style="flex:1;"><i class="fas fa-syringe"></i> <strong>Subcutánea: Hizentra®</strong> (CSL) <br> costos variables, mayor autonomía.</div>
+                </div>
+                <p class="mt-2"><i class="fas fa-chart-line"></i> Dosis de reemplazo (70 kg: 400 mg/kg = 28g) ≈ costo mensual $50,000-95,000 MXN (sector privado). Instituciones públicas cuentan con abasto regulado.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 3: Estudio de casos / Quizz interactivo -->
+    <div id="tab3" class="tab-content">
+        <div class="card">
+            <div class="card-header"><i class="fas fa-puzzle-piece"></i> Clínica Interactiva: Resuelve el caso</div>
+            <div class="card-body">
+                <div id="quizArea">
+                    <p><strong>Caso 1 de 3:</strong> Niño de 2 años con antecedente de 4 episodios de neumonía, 2 meningitis por neumococo, ausencia de amígdalas, IgG sérica 120 mg/dL (normal >400). ¿Cuál es el diagnóstico más probable y tratamiento?</p>
+                    <div class="quiz-option" data-quiz="1" data-correct="0">A) Inmunodeficiencia común variable (CVID) – tratar con antibióticos profilácticos</div>
+                    <div class="quiz-option" data-quiz="1" data-correct="1">B) Agammaglobulinemia de Bruton – Terapia de reemplazo con IGIV y antibióticos agudos</div>
+                    <div class="quiz-option" data-quiz="1" data-correct="2">C) Déficit de IgA – Tratamiento solo sintomático</div>
+                    <div id="feedback1" class="feedback"></div>
+                </div>
+                <div id="quizArea2">
+                    <p><strong>Caso 2:</strong> Mujer 35 años, infecciones sinusales recurrentes, bronquiectasias, IgG 450 mg/dL (bajo para edad), IgA 35 mg/dL, IgM baja, disminución de células B memoria. ¿Qué inmunoglobulina indicaría y dosis?</p>
+                    <div class="quiz-option" data-quiz="2" data-correct="0">A) No requiere inmunoglobulina, solo vacunas.</div>
+                    <div class="quiz-option" data-quiz="2" data-correct="1">B) IGIV dosis de reemplazo 400-600 mg/kg c/3-4 semanas, probable CVID.</div>
+                    <div class="quiz-option" data-quiz="2" data-correct="2">C) Dosis inmunomoduladora de 2 g/kg única vez.</div>
+                    <div id="feedback2" class="feedback"></div>
+                </div>
+                <div id="quizArea3">
+                    <p><strong>Caso 3:</strong> Paciente masculino 8 años, eczema grave, trombocitopenia, infecciones por gérmenes encapsulados, IgM elevada, IgG baja. ¿Síndrome asociado y tratamiento? </p>
+                    <div class="quiz-option" data-quiz="3" data-correct="0">A) Síndrome de DiGeorge; timectomía.</div>
+                    <div class="quiz-option" data-quiz="3" data-correct="1">B) Síndrome Wiskott-Aldrich – manejo con IGIV, trasplante de médula ósea como definitivo.</div>
+                    <div class="quiz-option" data-quiz="3" data-correct="2">C) Ataxia-telangiectasia – solo radioterapia.</div>
+                    <div id="feedback3" class="feedback"></div>
+                </div>
+                <button id="resetQuizBtn" class="btn-primary"><i class="fas fa-redo-alt"></i> Reinucializar respuestas</button>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 1rem;">
+            <div class="card-header"><i class="fas fa-microscope"></i> Integración con terapia de anticuerpos</div>
+            <div class="card-body">
+                <p>La terapia de reemplazo con inmunoglobulinas aporta anticuerpos específicos frente a patógenos comunes, restaura la inmunidad humoral y también actúa como inmunomodulador (bloqueo FcRn, antiidiotipos). En patologías como CVID o XLA, la IGIV es el pilar fundamental. En casos de déficit combinado, puede requerirse también soporte con profilaxis antimicrobiana y trasplante.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 4: Referencias bibliográficas y guías oficiales (FUMENI, Jeffrey Modell, IDF) -->
+    <div id="tab4" class="tab-content">
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header"><i class="fas fa-hand-holding-heart"></i> FUMENI</div>
+                <div class="card-body">
+                    <p><strong>Fundación Mexicana de Inmunodeficiencias Primarias</strong> (México). Ofrece información sobre derechos, diagnóstico y tratamiento en el país, grupos de apoyo.</p>
+                    <a href="https://fumeni.org.mx/" target="_blank" class="ref-link"><i class="fas fa-external-link-alt"></i> Acceder a FUMENI</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><i class="fas fa-globe"></i> Jeffrey Modell Foundation</div>
+                <div class="card-body">
+                    <p>Referencia internacional, red de centros de excelencia, recursos educativos para médicos y pacientes. Promueve diagnóstico temprano.</p>
+                    <a href="https://www.jeffreymodellfoundation.org/" target="_blank" class="ref-link"><i class="fas fa-external-link-alt"></i> Visitar JMF</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><i class="fas fa-shield-virus"></i> Immune Deficiency Foundation</div>
+                <div class="card-body">
+                    <p>Guías clínicas basadas en evidencia, webinars, documentos para el uso de IGIV, IDP en adultos y niños. Actualización anual.</p>
+                    <a href="https://primaryimmune.org/" target="_blank" class="ref-link"><i class="fas fa-external-link-alt"></i> primaryimmune.org</a>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="margin-top: 1rem;">
+            <div class="card-header"><i class="fas fa-file-alt"></i> Material adicional</div>
+            <div class="card-body">
+                <p><strong>Práctica 9: Uso de inmunoglobulinas.</strong> Mecanismos, efectos adversos, dosis. Basado en el documento oficial de inmunología clínica. Recomendaciones: infusión lenta, premedicación ante efectos colaterales, monitorización de IgG previas a cada dosis.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-dna"></i> Herramienta interactiva para médicos – Basada en guías internacionales y documento "Práctica 9 Inmuno".  
+        <br>© David Casas, Ángel Navi Contreras, Salvador Caudillo – Plataforma educativa.
+    </footer>
+</div>
+
+<script>
+    // LÓGICA DE PESTAÑAS
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+    function activateTab(tabId) {
+        contents.forEach(c => c.classList.remove('active-tab'));
+        document.getElementById(tabId).classList.add('active-tab');
+        tabs.forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
+    }
+    tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            activateTab(tabId);
+        });
+    });
+
+    // LÓGICA DEL QUIZ (casos clínicos)
+    // Definir respuestas correctas y feedback
+    const answers = {
+        1: { correct: 1, feedback: "✅ Correcto: Agammaglobulinemia de Bruton (XLA), requiere IGIV de reemplazo 400 mg/kg. Las otras opciones no explican la ausencia de amígdalas e infecciones graves." },
+        2: { correct: 1, feedback: "✅ Correcto: Cuadro compatible con CVID. Dosis de reemplazo con IGIV es estándar. Dosis inmunomoduladora no es primera línea en este contexto." },
+        3: { correct: 1, feedback: "✅ Síndrome de Wiskott-Aldrich (eczema, trombocitopenia, infecciones, IgM↑, IgG↓). Tratamiento con IGIV + trasplante alogénico." }
+    };
+    const wrongFeedback = {
+        1: "❌ Incorrecto. Revisa: el paciente es varón, IgG muy baja, infecciones graves desde edad temprana. La opción correcta es Agammaglobulinemia de Bruton con terapia de reemplazo con IGIV.",
+        2: "❌ No es correcto. Dado el patrón de infecciones e hipogammaglobulinemia, la terapia de reemplazo con IGIV está indicada (CVID).",
+        3: "❌ La triada eczema, trombocitopenia e infecciones con IgM elevada sugiere Wiskott-Aldrich, la IGIV es parte del manejo."
+    };
+
+    function setupQuiz(quizId, feedbackId, answersMap, wrongMap) {
+        const options = document.querySelectorAll(`#${quizId} .quiz-option`);
+        options.forEach(opt => {
+            opt.addEventListener('click', function() {
+                const qNumber = parseInt(this.getAttribute('data-quiz'));
+                const isCorrect = (parseInt(this.getAttribute('data-correct')) === answersMap[qNumber].correct);
+                const feedbackDiv = document.getElementById(feedbackId);
+                if (isCorrect) {
+                    feedbackDiv.innerHTML = `<div style="background:#dff0e1; padding:0.6rem; border-radius:1rem;">${answersMap[qNumber].feedback}</div>`;
+                } else {
+                    feedbackDiv.innerHTML = `<div style="background:#ffe6e5; padding:0.6rem; border-radius:1rem;">${wrongMap[qNumber] || "Respuesta incorrecta, revisa los conceptos."}</div>`;
+                }
+                // deshabilitar ligeramente el resto para no sobreescribir (se puede resetear)
+                options.forEach(opt => opt.style.opacity = "0.7");
+                this.style.opacity = "1";
+            });
+        });
+    }
+
+    // Inicializar los quizzes (aunque dinámicos por ID)
+    setupQuiz('quizArea', 'feedback1', answers, wrongFeedback);
+    setupQuiz('quizArea2', 'feedback2', answers, wrongFeedback);
+    setupQuiz('quizArea3', 'feedback3', answers, wrongFeedback);
+
+    // Botón reset
+    document.getElementById('resetQuizBtn').addEventListener('click', () => {
+        const allFeedbacks = document.querySelectorAll('.feedback');
+        allFeedbacks.forEach(fb => fb.innerHTML = '');
+        const allOptions = document.querySelectorAll('.quiz-option');
+        allOptions.forEach(opt => opt.style.opacity = "1");
+    });
+</script>
+</body>
+</html>
